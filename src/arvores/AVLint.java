@@ -21,9 +21,13 @@ public class AVLint {
 			p.hEsq = 0;
 		} else if (info < p.dado) {
 			p.esq = inserirAVL(p.esq, info);
-			if (p.esq.hDir > p.esq.hEsq) // Altura do nó será a maior
-				p.hEsq = p.esq.hDir + 1; // altura dos seus filhos
+			if (p.esq.hDir > p.esq.hEsq) // (Altura do nó será a maior)
+				// aqui eu vejo a altura da esquerda e da direita do filho, e caso
+				// a direita seja maior é adicionado 1.
+				p.hEsq = p.esq.hDir + 1; // (altura dos seus filhos)
 			else
+				// aqui é caso a esquerda e a direita do filho seja igual ou
+			    // a esquerda seja maior que a direita
 				p.hEsq = p.esq.hEsq + 1;
 		   	p = balanceamento(p);
 		} else {
@@ -90,7 +94,9 @@ public class AVLint {
 	}
 
 	public void atualizaAlturas(NO p) {
-		/*atualiza informação da altura de cada nó depois da remoção percorre a árvore usando percurso pós-ordem para ajustar primeiro os nós folhas (profundidade maior) e depois os níveis acima */
+		/*atualiza informação da altura de cada nó depois da remoção percorre
+		 a árvore usando percurso pós-ordem para ajustar primeiro os
+		 nós folhas (profundidade maior) e depois os níveis acima */
 		if( p != null) {
 			atualizaAlturas(p.esq);
 			if (p.esq == null)
